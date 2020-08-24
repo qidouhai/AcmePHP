@@ -12,24 +12,8 @@ class Response
      */
     public static function view($view, $data = [], $funcname = '')
     {
-        ob_start();
-        extract($data);
-        if (is_array($view)) {
-            foreach ($view as $value) {
-                $viewPath = ROOT_PATH . 'app/Views/' . trim($value, '/') . '.php';
-                file_exists($viewPath) && include $viewPath;
-            }
-        } else {
-            $viewPath = ROOT_PATH . 'app/Views/' . trim($view, '/') . '.php';
-            file_exists($viewPath) && include $viewPath;
-        }
-        $html = ob_get_contents();
-        ob_end_clean();
         header('Content-Type: text/html; charset=utf-8');
-        echo $html;
-        if (!empty($funcname)) {
-            call_user_func_array($funcname, []);
-        }
+        include_view($view, $data, $funcname);
         exit;
     }
 

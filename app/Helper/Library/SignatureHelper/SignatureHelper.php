@@ -2,17 +2,10 @@
 
 namespace App\Helper\Library\SignatureHelper;
 
-/**
- * 签名助手 2017/11/19
- *
- * Class SignatureHelper
- */
 class SignatureHelper
 {
-
     /**
      * 生成签名并发起请求
-     *
      * @param $accessKeyId string AccessKeyId (https://ak-console.aliyun.com/)
      * @param $accessKeySecret string AccessKeySecret
      * @param $domain string API接口所在域名
@@ -32,20 +25,14 @@ class SignatureHelper
             "Format" => "JSON",
         ), $params);
         ksort($apiParams);
-
         $sortedQueryStringTmp = "";
         foreach ($apiParams as $key => $value) {
             $sortedQueryStringTmp .= "&" . $this->encode($key) . "=" . $this->encode($value);
         }
-
         $stringToSign = "${method}&%2F&" . $this->encode(substr($sortedQueryStringTmp, 1));
-
         $sign = base64_encode(hash_hmac("sha1", $stringToSign, $accessKeySecret . "&", true));
-
         $signature = $this->encode($sign);
-
         $url = ($security ? 'https' : 'http') . "://{$domain}/";
-
         try {
             $content = $this->fetchContent($url, $method, "Signature={$signature}{$sortedQueryStringTmp}");
             return json_decode($content);
@@ -66,35 +53,27 @@ class SignatureHelper
     private function fetchContent($url, $method, $body)
     {
         $ch = curl_init();
-
         if ($method == 'POST') {
             curl_setopt($ch, CURLOPT_POST, 1); //post提交方式
             curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         } else {
             $url .= '?' . $body;
         }
-
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             "x-sdk-client" => "php/2.0.0"
         ));
-
         if (substr($url, 0, 5) == 'https') {
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         }
-
         $rtn = curl_exec($ch);
-
         if ($rtn === false) {
-            // 大多由设置等原因引起，一般无法保障后续逻辑正常执行，
-            // 所以这里触发的是E_USER_ERROR，会终止脚本执行，无法被try...catch捕获，需要用户排查环境、网络等故障
             trigger_error("[CURL_" . curl_errno($ch) . "]: " . curl_error($ch), E_USER_ERROR);
         }
         curl_close($ch);
-
         return $rtn;
     }
 }
