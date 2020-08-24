@@ -12,6 +12,6 @@ class SMS
     public static $security = true;
     // 短信签名
     public static $signName = '';
-    // 短信模板 Code
+    // 短信模板 code
     public static $templateCode = '';
 }
