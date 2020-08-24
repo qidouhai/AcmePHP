@@ -63,7 +63,7 @@ class Email
             ];
         } catch (Exception $e) {
             return [
-                'code' => -1,
+                'code' => 1,
                 'msg' => $this->mail->ErrorInfo
             ];
         }

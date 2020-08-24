@@ -26,7 +26,7 @@ class Response
      */
     public static function json($data, $msg = '成功', $code = 0, $funcname = '')
     {
-        header("Content-Type:application/json; charset=utf-8");
+        header("Content-Type: application/json; charset=utf-8");
         echo json_encode(['data' => $data, 'msg' => $msg, 'code' => $code], JSON_UNESCAPED_UNICODE);
         if (!empty($funcname)) {
             call_user_func_array($funcname, []);

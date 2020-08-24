@@ -10,6 +10,6 @@ class Base
     public static $timezone = 'Asia/Shanghai';
     // 是否支持跨域请求
     public static $isAllowCrossDomain = false;
-    // 允许用户跨域列表，isAllowCrossDomain 字段为 true 时生效
+    // 允许跨域列表，isAllowCrossDomain 字段为 true 时生效
     public static $accessControlAllowOrigin = [];
 }

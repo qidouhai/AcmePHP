@@ -23,7 +23,7 @@ class UploadFile
         $this->maxSize = $maxSize;
     }
 
-    /** 
+    /**
      * 文件上传
      */
     public function upload()

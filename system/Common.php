@@ -55,7 +55,7 @@ function create_code(int $length = 6)
  * @param array $data 数据
  * @param callback $funcname 回调函数
  */
-function include_view($view, $data = [], $funcname = '')
+function include_view($view, array $data = [], $funcname = '')
 {
     ob_start();
     extract($data);

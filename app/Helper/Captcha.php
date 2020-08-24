@@ -105,7 +105,7 @@ class Captcha
 
     private function outputImage()
     {
-        header('Content-Type:image/png');
+        header('Content-Type: image/png');
         imagepng($this->image);
     }
 
