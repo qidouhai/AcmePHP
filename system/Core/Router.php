@@ -67,7 +67,8 @@ class Router
         $controller = self::$routingTable[0] !== '' ? self::$routingTable[0] : RoutesConfig::$defaultController;
         $controllerArr = explode('-', $controller);
         array_walk($controllerArr, ['self', 'handlerController']);
-        self::$controller = implode('', $controllerArr);
+        $controller = implode('', $controllerArr);
+        self::$controller = in_array($controller, RoutesConfig::$blacklistControllers) ? RoutesConfig::$defaultErrorController : $controller;
     }
 
     private static function handlerController(string &$controllerStr)
@@ -81,7 +82,8 @@ class Router
         $method = isset(self::$routingTable[1]) ? self::$routingTable[1] : RoutesConfig::$defaultMethod;
         $methodArr = explode('-', $method);
         array_walk($methodArr, ['self', 'handlerMethod']);
-        self::$method = implode('', $methodArr);
+        $method = implode('', $methodArr);
+        self::$method = in_array($method, RoutesConfig::$blacklistMethods) ? RoutesConfig::$defaultMethod : $method;
     }
 
     private static function handlerMethod(&$methodStr, $k)
