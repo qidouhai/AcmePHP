@@ -11,7 +11,8 @@ class App
     {
         BaseConfig::$debug || error_reporting(0);
         define('START_RUN_TIME', microtime(true));
-        session_save_path(ROOT_PATH . 'writable/session');
+        file_exists(ROOT_PATH . 'writable/session/') || mkdir(ROOT_PATH . 'writable/session/', 0777, true);
+        session_save_path(ROOT_PATH . 'writable/session/');
         session_start();
         date_default_timezone_set(BaseConfig::$timezone);
         if (BaseConfig::$isAllowCrossDomain) {

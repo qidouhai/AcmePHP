@@ -49,6 +49,7 @@ class UploadFile
         if ($_FILES[$this->key]['size'] > $this->maxSize * 1024) {
             return ['code' => 3];
         }
+        file_exists(ROOT_PATH . 'writable/uploads/') || mkdir(ROOT_PATH . 'writable/uploads/', 0777, true);
         $this->savepath = ROOT_PATH . 'writable/uploads/';
         $this->savename = create_guid() . ".{$this->extension}";
 
