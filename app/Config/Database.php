@@ -12,6 +12,8 @@ class Database
     public static $passswd = 'root';
     // 数据库名
     public static $dbname = 'namecho';
+    // 前缀
+    public static $prefix = '';
     // 编码
     public static $charset = 'utf8';
     // 端口
