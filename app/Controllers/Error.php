@@ -6,8 +6,8 @@ use App\Controllers\BaseController;
 
 class Error extends BaseController
 {
-    public function index($responst)
+    public function index($response)
     {
-        $responst::view(['home/header', 'home/404', 'home/footer'], ['title' => '404']);
+        $response::view(['home/header', 'home/404', 'home/footer'], ['title' => '404']);
     }
 }

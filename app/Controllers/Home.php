@@ -6,8 +6,8 @@ use App\Controllers\BaseController;
 
 class Home extends BaseController
 {
-    public function index($responst)
+    public function index($response)
     {
-        $responst::view(['home/header', 'home/index', 'home/footer'], ['title' => 'NCPHP']);
+        $response::view(['home/header', 'home/index', 'home/footer'], ['title' => 'NCPHP']);
     }
 }
