@@ -1,8 +1,8 @@
 <?php
 
-namespace NC;
+namespace Acme;
 
-use NC\Core\Medoo;
+use Acme\Core\Medoo;
 use App\Config\Database as DatabaseConfig;
 use PDO;
 

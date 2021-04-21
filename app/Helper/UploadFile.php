@@ -51,7 +51,7 @@ class UploadFile
         }
         file_exists(ROOT_PATH . 'writable/uploads/') || mkdir(ROOT_PATH . 'writable/uploads/', 0777, true);
         $this->savepath = ROOT_PATH . 'writable/uploads/';
-        $this->savename = create_guid() . ".{$this->extension}";
+        $this->savename = md5(uniqid()) . ".{$this->extension}";
 
         if (file_exists("{$this->savepath}{$this->savename}")) {
             return ['code' => 4];

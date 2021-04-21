@@ -14,7 +14,7 @@ class ClassLoader
     private function findFile(string $class)
     {
         $class = explode('\\', $class);
-        $class[0] = $class[0] === 'NC' ? 'system' : lcfirst($class[0]);
+        $class[0] = $class[0] === 'Acme' ? 'system' : lcfirst($class[0]);
         return ROOT_PATH . implode('/', $class) . '.php';
     }
 

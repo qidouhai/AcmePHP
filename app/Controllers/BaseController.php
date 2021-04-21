@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use NC\Controller;
+use Acme\Controller;
 
 class BaseController extends Controller
 {

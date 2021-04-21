@@ -1,9 +1,9 @@
 <?php
 
-namespace NC;
+namespace Acme;
 
 use App\Config\Base as BaseConfig;
-use NC\Core\Router;
+use Acme\Core\Router;
 
 class App
 {

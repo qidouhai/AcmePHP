@@ -1,6 +1,6 @@
 <?php
 
-namespace NC;
+namespace Acme;
 
 class Controller
 {

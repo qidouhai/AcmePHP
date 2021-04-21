@@ -1,8 +1,8 @@
 <?php
 
-namespace NC\HTTP;
+namespace Acme\HTTP;
 
-use NC\Core\Router;
+use Acme\Core\Router;
 
 class Request
 {

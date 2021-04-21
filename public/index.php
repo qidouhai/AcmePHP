@@ -6,4 +6,4 @@ if (phpversion() < $minPHPVersion) {
 unset($minPHPVersion);
 define('ROOT_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR);
 require ROOT_PATH . 'system/Autoloader/autoload.php';
-NC\App::run();
+Acme\App::run();

@@ -1,6 +1,6 @@
 <?php
 
-namespace NC\Core;
+namespace Acme\Core;
 
 use App\Config\Routes as RoutesConfig;
 
@@ -46,7 +46,7 @@ class Router
         $controllerObj = new $controllerClass();
         $method = self::$method;
         if (method_exists($controllerObj,  $method)) {
-            $controllerObj->$method('\NC\HTTP\Response', '\NC\HTTP\Request');
+            $controllerObj->$method('\Acme\HTTP\Response', '\Acme\HTTP\Request');
         } else {
             self::errorRequest();
         }
@@ -59,7 +59,7 @@ class Router
         $errorControllerObj = new $errorControllerClass();
         $defaultMethod = RoutesConfig::$defaultMethod;
         method_exists($errorControllerObj, $defaultMethod) || die('错误方法不存在，请创建错误方法');
-        $errorControllerObj->$defaultMethod('\NC\HTTP\Response', '\NC\HTTP\Request');
+        $errorControllerObj->$defaultMethod('\Acme\HTTP\Response', '\Acme\HTTP\Request');
     }
 
     private static function parsingController()
